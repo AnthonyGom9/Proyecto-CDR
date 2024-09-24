@@ -1,5 +1,10 @@
 package main;
 
+import controller.Conn;
+import java.sql.Connection;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author KebFelipe
@@ -29,8 +34,9 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnl_Menu.setBackground(new java.awt.Color(39, 52, 68));
-        pnl_Menu.setPreferredSize(new java.awt.Dimension(100, 17));
+        pnl_Menu.setPreferredSize(new java.awt.Dimension(150, 17));
 
+        btn_power.setText("Desde un Archivo");
         btn_power.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_powerActionPerformed(evt);
@@ -44,7 +50,7 @@ public class Main extends javax.swing.JFrame {
         pnl_View.setLayout(pnl_ViewLayout);
         pnl_ViewLayout.setHorizontalGroup(
             pnl_ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 703, Short.MAX_VALUE)
+            .addGap(0, 653, Short.MAX_VALUE)
         );
         pnl_ViewLayout.setVerticalGroup(
             pnl_ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -58,7 +64,14 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_powerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_powerActionPerformed
-        // TODO add your handling code here:
+        try  {
+            Connection conn = new Conn().conectar();
+            if (conn != null) {
+                JOptionPane.showMessageDialog(null, "Conexión a la base de datos establecida correctamente.");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos: " + e.getMessage());
+        }
     }//GEN-LAST:event_btn_powerActionPerformed
 
     /**

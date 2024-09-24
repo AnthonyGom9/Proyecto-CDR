@@ -4,12 +4,12 @@ package GUI;
  *
  * @author KebFelipe
  */
-public class Homef extends javax.swing.JPanel {
+public class Home extends javax.swing.JPanel {
 
     /**
      * Creates new form Home
      */
-    public Homef() {
+    public Home() {
         initComponents();
     }
 
