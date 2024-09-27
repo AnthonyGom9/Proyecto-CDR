@@ -1,16 +1,16 @@
 package enums;
 
-public enum Colores {
+public enum Colors {
 
     FONDO("#4E73DF"),
     FONDO_GRIS("#F8F9FD"),
-    HOVER("#8FA6EB"),
+    FONDO_HOVER("#8FA6EB"),
     BLANCO("#FFFFFF"),
     NEGRO("#000000");
 
     private final String color;
 
-    Colores(String color) {
+    Colors(String color) {
         this.color = color;
     }
 

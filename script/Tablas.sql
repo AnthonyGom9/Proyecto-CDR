@@ -14,6 +14,7 @@ CREATE TABLE cdr_archivo(
     ac_estado_registro TINYINT UNSIGNED NOT NULL DEFAULT 1,
     ac_usuario_registro INT NOT NULL,
     ac_fecha_registro DATETIME NOT NULL DEFAULT NOW(),
+    UNIQUE KEY unique_file (ac_nombre, ac_ruta, ac_fecha_registro),
     FOREIGN KEY (ac_usuario_registro) REFERENCES usuario(us_idusuario)
 );
 
@@ -30,6 +31,6 @@ CREATE TABLE cdr_llamada(
 	ll_estado_registro TINYINT UNSIGNED NOT NULL DEFAULT 1,
     ll_usuario_registro INT NOT NULL,
     ll_fecha_registro DATETIME NOT NULL DEFAULT NOW(),
-    FOREIGN KEY (ll_idllamada) REFERENCES cdr_archivo(ac_idarchivo),
+    FOREIGN KEY (ll_idarchivo) REFERENCES cdr_archivo(ac_idarchivo),
     FOREIGN KEY (ll_usuario_registro) REFERENCES usuario(us_idusuario)
 );
