@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class Conn {
     private final String URL = "jdbc:mysql://localhost:3306/CDR";
     private final String USER = "root";
-    private final String PASSWORD = "R00tP4ssw0rd";
+    private final String PASSWORD = "R00tP4ssw0rd"; 
 
     public Conn() {
         try {

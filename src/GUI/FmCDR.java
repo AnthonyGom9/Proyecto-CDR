@@ -40,7 +40,10 @@ public class FmCDR extends JFrame {
         this.setLocationRelativeTo(null);
         //this.setUndecorated(true);
         this.setVisible(true);
-
+        
+        ImageIcon icon = new ImageIcon("/assets/icon.png"); 
+        this.setIconImage(icon.getImage());
+        
         pnl_menu = new JPanel();
         pnl_menu.setLayout(new BoxLayout(pnl_menu, BoxLayout.Y_AXIS));
         pnl_menu.setBackground(Color.decode("#4E73DF")); // Hacer el panel transparente
@@ -60,8 +63,8 @@ public class FmCDR extends JFrame {
         JButton btn_Archivo = new JButton("Por Archivo");
         configurarBoton(btn_Archivo, "ic_file.svg");
 
-        JButton btn_Lote = new JButton("Por Lote");
-        configurarBoton(btn_Lote, "ic_batch.svg");
+        /*JButton btn_Lote = new JButton("Por Carpeta");
+        configurarBoton(btn_Lote, "ic_batch.svg");*/
         
         JButton btn_Reporte_Cuenta = new JButton("Reporte de Cuenta");
         configurarBoton(btn_Reporte_Cuenta, "ic_report.svg");
@@ -74,7 +77,7 @@ public class FmCDR extends JFrame {
         pnl_menu.add(Box.createRigidArea(new Dimension(0, 25)));
         pnl_menu.add(btn_Home);
         pnl_menu.add(btn_Archivo);
-        pnl_menu.add(btn_Lote);
+        //pnl_menu.add(btn_Lote);
         pnl_menu.add(btn_Reporte_Cuenta);
         pnl_menu.add(Box.createVerticalGlue());
         pnl_menu.add(btn_Salir);
@@ -84,21 +87,20 @@ public class FmCDR extends JFrame {
         cardLayout = new CardLayout();
         pnl_view.setLayout(cardLayout);
 
-        // Añadir los paneles a pnl_view con identificadores
         pnl_view.add(new PnlMain(), "1");
         pnl_view.add(new PnlFile(), "2");
-        pnl_view.add(new PnlBatch(), "3");
-        pnl_view.add(new PnlReporte(), "4");
+        //pnl_view.add(new PnlBatch(), "3");
+        pnl_view.add(new PnlReporte(), "3");
 
         // Acciones de los botones para cambiar de panel
         btn_Home.addActionListener(e -> cardLayout.show(pnl_view, "1"));
         btn_Archivo.addActionListener(e -> cardLayout.show(pnl_view, "2"));
-        btn_Lote.addActionListener(e -> cardLayout.show(pnl_view, "3"));
-        btn_Reporte_Cuenta.addActionListener(e -> cardLayout.show(pnl_view, "4"));
+        //btn_Lote.addActionListener(e -> cardLayout.show(pnl_view, "3"));
+        btn_Reporte_Cuenta.addActionListener(e -> cardLayout.show(pnl_view, "3"));
         btn_Salir.addActionListener(e -> System.exit(0));
 
         setLayout(new BorderLayout());
-        add(pnl_menu, BorderLayout.WEST); // pnl_menu en la parte superior
+        add(pnl_menu, BorderLayout.WEST);
         add(pnl_view, BorderLayout.CENTER);
     }
 
@@ -107,9 +109,9 @@ public class FmCDR extends JFrame {
         btn.setMaximumSize(new Dimension(Integer.MAX_VALUE,  btn.getPreferredSize().height));
         btn.setPreferredSize(new Dimension(230,40));
         btn.setFont(new Font("Arial", Font.PLAIN, 16));
-        btn.setBorderPainted(false); // Eliminar los bordes del botón
-        btn.setHorizontalAlignment(JButton.LEFT); // Alinear el texto a la izquierda
-        btn.setBackground(Color.decode(Colors.FONDO.getColor().toString())); // Color de fondo del botón
+        btn.setBorderPainted(false); 
+        btn.setHorizontalAlignment(JButton.LEFT);
+        btn.setBackground(Color.decode(Colors.FONDO.getColor().toString()));
         btn.setForeground(Color.WHITE);
 
         ImageIcon defaultIcon = null;
@@ -124,7 +126,6 @@ public class FmCDR extends JFrame {
             e.printStackTrace();
         }
 
-        // Asignar el ícono por defecto
         if (defaultIcon != null) {
             btn.setIcon(defaultIcon);
         }
@@ -152,4 +153,5 @@ public class FmCDR extends JFrame {
             }
         });
     }
+    
 }

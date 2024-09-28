@@ -1,7 +1,10 @@
 package GUI;
 
 import controller.LlamadaController;
+import enums.Colors;
+
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -41,6 +44,7 @@ public class PnlReporte extends JPanel {
     }
 
     private void initComponents() {
+    	setBackground(Color.getColor(Colors.BLANCO.getColor().toString()));
         setLayout(new BorderLayout());
         initEncabezado();
         initTabla();

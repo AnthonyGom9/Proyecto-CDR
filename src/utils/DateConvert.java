@@ -1,6 +1,8 @@
 package utils;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.text.ParseException;
 /**
@@ -27,5 +29,10 @@ public class DateConvert {
             e.printStackTrace();
             return "";
         }
+    }
+    
+    public static String ObtenerHoraActual() {
+    	LocalDateTime now = LocalDateTime.now();
+		return now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
     }
 }
