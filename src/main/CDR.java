@@ -1,11 +1,11 @@
 package main;
 
-import GUI.FmMain;
+import GUI.FmCDR;
 
-public class Main{
+public class CDR{
 
     public static void main(String[] args) {
-        FmMain fm = new FmMain();
+        FmCDR fm = new FmCDR();
         fm.setVisible(true);        
     }
 }

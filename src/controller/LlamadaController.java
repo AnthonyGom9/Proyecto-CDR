@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.CallableStatement;
 import java.sql.Types;
 import java.sql.SQLException;
+import java.sql.ResultSet;
+import models.LlamadaModel;
+import models.ReporteModel;
 
 /**
  *
@@ -49,6 +52,56 @@ public class LlamadaController {
             } catch (SQLException ex) {
                 System.out.println(ex);
             }
+        }
+    }
+
+    public ReporteModel getLlamadaCuenta(String cuenta) {
+        ReporteModel reporte = new ReporteModel();
+        ResultSet result = null;
+        try {
+            Connection conn = new Conn().conectar();
+            String sql = "{CALL sp_get_llamada_cuenta(?, ?, ?, ?)}";
+            callableStmt = conn.prepareCall(sql);
+            callableStmt.setString(1, cuenta);
+            callableStmt.registerOutParameter(2, Types.DECIMAL);
+            callableStmt.registerOutParameter(3, Types.DECIMAL);
+            callableStmt.registerOutParameter(4, Types.VARCHAR);
+            result = callableStmt.executeQuery();
+            
+            reporte.setTotal_duracion(callableStmt.getFloat(2));
+            reporte.setTotal_tarifa(callableStmt.getFloat(3));
+            reporte.setDescripcion_tarifa(callableStmt.getString(4));
+            
+            while(result.next()){
+                reporte.getLlamadas().add(new LlamadaModel(
+                        result.getInt("cuenta"),
+                        result.getString("emisor"),
+                        result.getString("receptor"),
+                        result.getString("fecha"),
+                        result.getFloat("duracion"),
+                        result.getFloat("tarifa"),
+                        result.getString("categoria"),
+                        result.getString("archivo")
+                ));
+            }
+            
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return reporte;
+        } finally {
+            try {
+                if (callableStmt != null) {
+                    callableStmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
+                return reporte;
+            }
+            return reporte;
         }
     }
 }

@@ -27,7 +27,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class PnlScan extends JPanel {
+public class PnlBatch extends JPanel {
 
     private JTextField txt_buscar = new JTextField(30);
     private JButton btn_Buscar = new JButton("Buscar Archivo");
@@ -36,7 +36,7 @@ public class PnlScan extends JPanel {
 
     
 
-    public PnlScan() {
+    public PnlBatch() {
         this.initComponents();
     }
 

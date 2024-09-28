@@ -27,17 +27,25 @@ public class IconButton {
         svgDiagram.setIgnoringClipHeuristic(true);
         svgDiagram.updateTime(0);
 
-        int iconSize = 25; // Cambia el tamaño a 60px
+        int iconSize = 20; // Cambia el tamaño a 60px
         BufferedImage img = new BufferedImage(iconSize, iconSize, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = img.createGraphics();
 
         // Establecer el color para el SVG
         g.clearRect(0, 0, img.getWidth(), img.getHeight());
+        
         g.setColor(Color.decode(color_fondo_hex)); // Establecer color de fondo
         g.fillRect(0, 0, img.getWidth(), img.getHeight()); // Dibujar el fondo
 
-        // Redimensionar el SVG
-        g.scale((double) iconSize / svgDiagram.getWidth(), (double) iconSize / svgDiagram.getHeight());
+        // Obtener dimensiones del SVG para escalado
+        float svgWidth = svgDiagram.getWidth();
+        float svgHeight = svgDiagram.getHeight();
+
+        // Comprobar si las dimensiones del SVG son válidas
+        if (svgWidth > 0 && svgHeight > 0) {
+            // Escalar SVG a tamaño deseado
+            g.scale((double) iconSize / svgWidth, (double) iconSize / svgHeight);
+        }
         svgDiagram.render(g);
 
         g.setComposite(AlphaComposite.SrcAtop); // Aplica el color solo a lo visible
