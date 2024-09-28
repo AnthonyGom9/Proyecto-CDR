@@ -1,11 +1,11 @@
 package main;
 
-import GUI.FmPrincipal;
+import GUI.FmMain;
 
 public class Main{
 
     public static void main(String[] args) {
-        FmPrincipal fm = new FmPrincipal();
+        FmMain fm = new FmMain();
         fm.setVisible(true);        
     }
 }

@@ -2,7 +2,7 @@ package GUI;
 
 import javax.swing.JPanel;
 
-import enums.Colores;
+import enums.Colors;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -10,14 +10,14 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
 
-public class PnlInicio extends JPanel {
+public class PnlMain extends JPanel {
 
-    public PnlInicio() {
+    public PnlMain() {
         this.initComponents();
     }
 
     private void initComponents() {
-        setBackground(Color.getColor(Colores.FONDO_GRIS.getColor().toString()));
+        setBackground(Color.getColor(Colors.FONDO_GRIS.getColor().toString()));
 
         
     }
