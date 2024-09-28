@@ -89,19 +89,6 @@ public class PnlBatch extends JPanel {
 		add(pnl_encabezado, BorderLayout.NORTH);
 	}
 
-	/*private void initComponents() {
-		setBackground(Color.getColor(Colors.BLANCO.getColor().toString()));
-		setLayout(new FlowLayout());
-
-		btn_Buscar.addActionListener(e -> buscarArchivo());
-		btn_Iniciar.addActionListener(e -> escanearCarpeta());
-
-		add(txt_buscar);
-		add(btn_Buscar);
-		//add(btn_Iniciar);
-		//add(lbl_progreso);
-	}*/
-
 	private void buscarArchivo() {
 		JFileChooser seleccionador = new JFileChooser();
 		seleccionador.setDialogTitle("Seleccione una carpeta");
@@ -145,10 +132,6 @@ public class PnlBatch extends JPanel {
 		productorPool.shutdown();
 
 		ExecutorService consumidorPool = Executors.newFixedThreadPool(2);
-		/*for (int i = 0; i < 2; i++) {
-			CDRConsumer consumidor = new CDRConsumer(datos);
-			consumidorPool.submit(consumidor); // Enviar el consumidor al pool
-		}*/
 
 		try {
 			if (productorPool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS)) {

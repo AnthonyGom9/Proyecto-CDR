@@ -21,7 +21,7 @@ public class ReporteModel {
         this.llamadas = new ArrayList();
     }
     
-    public ReporteModel(float total_duracion, float total_tarifa, String descripcion_tarifa, List llamadas) {
+    public ReporteModel(float total_duracion, float total_tarifa, String descripcion_tarifa, List<LlamadaModel> llamadas) {
         this.total_duracion = total_duracion;
         this.total_tarifa = total_tarifa;
         this.descripcion_tarifa = descripcion_tarifa;
